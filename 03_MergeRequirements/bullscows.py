@@ -2,7 +2,7 @@ import sys
 import random
 from urllib import request
 from os.path import exists
-from cowsay import cowsay, list_cows
+from cowsay import cowsay, list_cows, read_dot_cow
 
 def bullscows(guess: str, secret: str) -> (int, int):
     bulls, cows = 0, 0
@@ -23,7 +23,9 @@ def inform(format_string: str, bulls: int, cows: int) -> None:
 
 
 def ask(prompt: str, valid: list[str] = None) -> str:
-    res = input(cowsay(prompt, cow=random.choice(list_cows())))
+    cow = read_dot_cow(open('./my_cow.cow'))
+    res = input(cowsay(prompt, cowfile=cow))
+        
     if valid is None:
         return res
     else:
