@@ -43,8 +43,7 @@ def gameplay(ask: callable, inform: callable, words: list[str]) -> int:
         bulls, cows = bullscows(guess, secret)
         inform("Быки: {}, Коровы: {}", bulls, cows)
         if guess == secret:
-            print(count)
-            break
+            return count
 
 
 while True:
@@ -72,4 +71,4 @@ while True:
 
         diction = [word for word in diction if length == len(word)]
 
-        gameplay(ask, inform, diction)
+        print(gameplay(ask, inform, diction))
